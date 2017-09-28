@@ -1,20 +1,19 @@
-<div>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Release Date</th>
-            <th>Director</th>
-            <th>Producer</th>
-            <th>Score</th>
-            <th>Description</th>
-        </tr>
-        <tr ng-repeat="film in TableCtrl.films">
-            <td>{{ film.title }}</td>
-            <td>{{ film.release_date }}</td>
-            <td>{{ film.director }}</td>
-            <td>{{ film.producer }}</td>
-            <td>{{ film.rt_score }}</td>
-            <td>{{ film.description }}</td>
-        </tr>
-    </table>
-</div>
+
+<table ng-if="TableCtrl.isDoneLoading" class="animate-if">
+    <tr>
+        <th ng-click="TableCtrl.sortBy()">Title</th>
+        <th>Release Date</th>
+        <th>Director</th>
+        <th>Producer</th>
+        <th>Score</th>
+        <th>Description</th>
+    </tr>
+    <tr ng-repeat="film in TableCtrl.films">
+        <td>{{ film.title }}</td>
+        <td>{{ film.release_date }}</td>
+        <td>{{ film.director }}</td>
+        <td>{{ film.producer }}</td>
+        <td>{{ film.rt_score }}</td>
+        <td>{{ film.description }}</td>
+    </tr>
+</table>

@@ -1,6 +1,7 @@
 angular.module('app')
 
-  .controller('TableCtrl', () => {
+  .controller('TableCtrl', function () {
+
 
   })
 
@@ -8,6 +9,8 @@ angular.module('app')
     templateUrl: '/templates/tableInfo.html',
     bindings: {
       films: '<',
+      isDoneLoading: '<',
+      sortBy: '&',
     },
     controller: 'TableCtrl',
     controllerAs: 'TableCtrl',
