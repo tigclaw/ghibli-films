@@ -1,13 +1,20 @@
 angular.module('app')
 
-  .controller('AppController', () => {
-    console.log('loaded app.js!');
+  .controller('AppCtrl', function (apiService) {
+
+    const fetchedPromise = apiService.fetchData();
+    fetchedPromise
+      .then((data) => {
+        console.log('data returned', data);
+        this.films = data.data;
+      })
+      .catch((error) => {
+        console.log('ERROR Getting', error);
+      });
   })
 
   .component('app', {
     templateUrl: '/templates/app.html',
-    bindings: {
-
-    },
-    controller: 'AppController',
+    controller: 'AppCtrl',
+    controllerAs: 'AppCtrl',
   });
