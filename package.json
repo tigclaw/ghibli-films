@@ -2,14 +2,14 @@
   "name": "spa-ang",
   "version": "1.0.0",
   "description": "Single page app built with Angular 1.5",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Angela Lin",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.11",
-    "angular-material": "^1.1.5"
+    "express": "^4.15.5"
   }
 }
