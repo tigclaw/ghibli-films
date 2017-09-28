@@ -4,11 +4,11 @@ angular.module('app')
 
     const fetchedPromise = apiService.fetchData();
     fetchedPromise
-      .then((data) => {
+      .success((data) => {
         console.log('data returned', data);
-        this.films = data.data;
+        this.films = data;
       })
-      .catch((error) => {
+      .error((error) => {
         console.log('ERROR Getting', error);
       });
   })
