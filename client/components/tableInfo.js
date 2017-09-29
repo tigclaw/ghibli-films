@@ -1,8 +1,10 @@
 angular.module('app')
 
   .controller('TableCtrl', function () {
-
-
+    this.clickHeading = function (event) {
+      this.setSortCategory({ category: event.currentTarget.textContent });
+      this.toggleSortReverse();
+    };
   })
 
   .component('tableInfo', {
@@ -10,7 +12,11 @@ angular.module('app')
     bindings: {
       films: '<',
       isDoneLoading: '<',
-      sortBy: '&',
+      setSortCategory: '&',
+      toggleSortReverse: '&',
+      sortType: '<',
+      sortReverse: '<',
+      searchTerm: '<',
     },
     controller: 'TableCtrl',
     controllerAs: 'TableCtrl',

@@ -1,19 +1,19 @@
 
 <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
     <tr>
-        <th ng-click="TableCtrl.sortBy()">Title</th>
-        <th>Release Date</th>
-        <th>Director</th>
-        <th>Producer</th>
-        <th>Score</th>
-        <th>Description</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Title</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Year</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Director</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Producer</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Score</th>
+        <th ng-click="TableCtrl.clickHeading($event)">Description</th>
     </tr>
-    <tr ng-repeat="film in TableCtrl.films">
+    <tr ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse">
         <td>{{ film.title }}</td>
         <td>{{ film.release_date }}</td>
         <td>{{ film.director }}</td>
         <td>{{ film.producer }}</td>
-        <td>{{ film.rt_score }}</td>
+        <td>{{ film.rt_score + '%' }}</td>
         <td>{{ film.description }}</td>
     </tr>
 </table>

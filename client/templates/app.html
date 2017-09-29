@@ -1,7 +1,12 @@
 <div>
-    <h3>Ghibli Stories</h3>
+    <h3>Ghibli Films</h3>
     <table-info films="AppCtrl.films"
         is-done-loading="AppCtrl.isDoneLoading"
-        sort-by="AppCtrl.sortBy">
+        set-sort-category="AppCtrl.setSortCategory(category)"
+        toggle-sort-reverse="AppCtrl.toggleSortReverse()"
+        sort-type="AppCtrl.sortType"
+        sort-reverse="AppCtrl.sortReverse"
+        search-term="AppCtrl.searchTerm"
+    >
     </table-info>
 </div>

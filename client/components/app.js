@@ -1,13 +1,22 @@
+const TableCategoryRef = {
+  Title: 'title',
+  Year: 'release_date',
+  Director: 'director',
+  Producer: 'producer',
+  Score: 'rt_score',
+  Description: 'description',
+};
+
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
     this.isDoneLoading = false;
-    const fetchedPromise = apiService.fetchData();
+    this.sortType = 'title';
+    this.sortReverse = false;
+    this.searchTerm = '';
 
-    // setTimeout(() => { 
-    fetchedPromise
+    apiService.fetchData()
       .success((data) => {
-        console.log('data returned', data);
         this.films = data;
         this.isDoneLoading = true;
       })
@@ -15,12 +24,16 @@ angular.module('app')
         alert(`Error connecting to data: ${error}`);
         this.isDoneLoading = true;
       });
-    // }, 3000);
 
+    this.setSortCategory = function (category) {
+      console.log('set sort', category);
+      this.sortType = TableCategoryRef[category];
+    };
 
-    this.sortBy = function() {
-      console.log('clicked sort');
-    }
+    this.toggleSortReverse = function () {
+      console.log('toggling sort reverse');
+      this.sortReverse = !this.sortReverse;
+    };
   })
 
   .component('app', {
