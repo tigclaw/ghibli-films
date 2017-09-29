@@ -8,7 +8,7 @@
         <th ng-click="TableCtrl.clickHeading($event)">Score</th>
         <th ng-click="TableCtrl.clickHeading($event)">Description</th>
     </tr>
-    <tr ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse">
+    <tr ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
         <td>{{ film.title }}</td>
         <td>{{ film.release_date }}</td>
         <td>{{ film.director }}</td>

@@ -10,13 +10,33 @@ const TableCategoryRef = {
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
-    this.isDoneLoading = false;
-    this.sortType = 'title';
-    this.sortReverse = false;
-    this.searchTerm = '';
 
+    // Define variables
+    this.isDoneLoading = false;
+    this.sortType = TableCategoryRef.Year;
+    this.sortReverse = false;
+    this.searchText = '';
+
+    // Define methods
+    this.setSortCategory = (category) => {
+      console.log('Set sort category ->', category);
+      this.sortType = TableCategoryRef[category];
+    };
+
+    this.toggleSortReverse = () => {
+      console.log('Toggling sort reverse');
+      this.sortReverse = !this.sortReverse;
+    };
+
+    this.setSearchText = (text) => {
+      console.log('Setting search ->', text);
+      this.searchText = text;
+    };
+
+    // To run when component is loaded
     apiService.fetchData()
       .success((data) => {
+        console.log('data', data);
         this.films = data;
         this.isDoneLoading = true;
       })
@@ -24,16 +44,6 @@ angular.module('app')
         alert(`Error connecting to data: ${error}`);
         this.isDoneLoading = true;
       });
-
-    this.setSortCategory = function (category) {
-      console.log('set sort', category);
-      this.sortType = TableCategoryRef[category];
-    };
-
-    this.toggleSortReverse = function () {
-      console.log('toggling sort reverse');
-      this.sortReverse = !this.sortReverse;
-    };
   })
 
   .component('app', {

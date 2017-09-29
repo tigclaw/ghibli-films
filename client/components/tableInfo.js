@@ -16,7 +16,7 @@ angular.module('app')
       toggleSortReverse: '&',
       sortType: '<',
       sortReverse: '<',
-      searchTerm: '<',
+      searchText: '<',
     },
     controller: 'TableCtrl',
     controllerAs: 'TableCtrl',
