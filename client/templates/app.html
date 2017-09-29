@@ -1,14 +1,19 @@
-<div>
-    <h3>Ghibli Films</h3>
-    <search-bar update-search="AppCtrl.setSearchText">
-    </search-bar>
-    <table-info films="AppCtrl.films"
-        is-done-loading="AppCtrl.isDoneLoading"
-        set-sort-category="AppCtrl.setSortCategory(category)"
-        toggle-sort-reverse="AppCtrl.toggleSortReverse()"
-        sort-type="AppCtrl.sortType"
-        sort-reverse="AppCtrl.sortReverse"
-        search-text="AppCtrl.searchText"
-    >
-    </table-info>
+<div layout="column" layout-fill>
+    <md-toolbar>
+        <h2 class="md-toolbar-tools">Ghibli Films</h2>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <search-bar update-search="AppCtrl.setSearchText">
+        </search-bar>
+        <table-info films="AppCtrl.films"
+            is-done-loading="AppCtrl.isDoneLoading"
+            set-sort-category="AppCtrl.setSortCategory(category)"
+            toggle-sort-reverse="AppCtrl.toggleSortReverse()"
+            sort-type="AppCtrl.sortType"
+            sort-reverse="AppCtrl.sortReverse"
+            search-text="AppCtrl.searchText"
+        >
+        </table-info>
+    </md-content>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 angular.module('app')
 
   .controller('SearchCtrl', function () {
-    
+
   })
 
   .component('searchBar', {

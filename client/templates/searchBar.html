@@ -1,3 +1,7 @@
-<label>Search: 
-    <input type="text" ng-model="SearchCtrl.textInput" ng-change="SearchCtrl.updateSearch(SearchCtrl.textInput)">
+<label>
+    <i class="material-icons" md-36>search</i>         
+    <md-input-container class="md-icon-float" aria-label="search">
+        <label>Search</label>
+        <input aria-label="search" ng-model="SearchCtrl.textInput" ng-change="SearchCtrl.updateSearch(SearchCtrl.textInput)">
+    </md-input-container>
 </label>

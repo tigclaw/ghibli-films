@@ -1,19 +1,18 @@
-
 <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
-    <tr>
-        <th ng-click="TableCtrl.clickHeading($event)">Title</th>
-        <th ng-click="TableCtrl.clickHeading($event)">Year</th>
-        <th ng-click="TableCtrl.clickHeading($event)">Director</th>
-        <th ng-click="TableCtrl.clickHeading($event)">Producer</th>
-        <th ng-click="TableCtrl.clickHeading($event)">Score</th>
-        <th ng-click="TableCtrl.clickHeading($event)">Description</th>
-    </tr>
-    <tr ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
-        <td>{{ film.title }}</td>
-        <td>{{ film.release_date }}</td>
-        <td>{{ film.director }}</td>
-        <td>{{ film.producer }}</td>
-        <td>{{ film.rt_score + '%' }}</td>
-        <td>{{ film.description }}</td>
+    <thead>
+        <tr layout="row">
+            <th flex ng-click="TableCtrl.clickHeading($event)">Title <i class="material-icons" md-36>arrow_drop_down</i></th>
+            <th flex="10" ng-click="TableCtrl.clickHeading($event)">Year <i class="material-icons" md-36>arrow_drop_down</i></th>
+            <th flex="10" ng-click="TableCtrl.clickHeading($event)">Score <i class="material-icons" md-36>arrow_drop_down</i></th>
+            <th flex ng-click="TableCtrl.clickHeading($event)">Director <i class="material-icons" md-36>arrow_drop_down</i></th>
+            <th flex ng-click="TableCtrl.clickHeading($event)">Producer <i class="material-icons" md-36>arrow_drop_down</i></th>
+        </tr>
+    </thead>
+    <tr layout="row"ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
+        <td flex>{{ film.title }}</td>
+        <td flex="10">{{ film.release_date }}</td>
+        <td flex="10">{{ film.rt_score + '%' }}</td>
+        <td flex>{{ film.director }}</td>
+        <td flex>{{ film.producer }}</td>
     </tr>
 </table>
