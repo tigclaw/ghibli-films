@@ -1,8 +1,7 @@
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
-
-    // Define variables
+    // DEFINE VARIABLES
     this.categoryReference = {
       Title: 'title',
       Year: 'release_date',
@@ -11,17 +10,27 @@ angular.module('app')
       Score: 'rt_score',
       Description: 'description',
     };
+    this.categoryReferenceRev = {
+      title: 'Title',
+      release_date: 'Year',
+      director: 'Director',
+      producer: 'Producer',
+      rt_score: 'Score',
+      description: 'Description',
+    };
     this.isDoneLoading = false;
     this.sortType = this.categoryReference.Year;
     this.sortReverse = false;
     this.searchText = '';
     this.categories = Object.keys(this.categoryReference);
+    this.dropdownFilter = 'Year';
 
-    // Define methods
+    // DEFINE METHODS
     this.setSortCategory = (category) => {
-      if (this.categoryReference[category] !== this.sortType) {
+      if (category !== this.sortType) {
         this.sortReverse = false;
-        this.sortType = this.categoryReference[category];
+        this.sortType = category;
+        this.dropdownFilter = this.categoryReferenceRev[this.sortType];
       } else {
         this.toggleSortReverse();
       }
@@ -33,24 +42,21 @@ angular.module('app')
     };
 
     this.setSearchText = (text) => {
-      console.log('Setting search ->', text);
+      // console.log('Setting search ->', text);
       this.searchText = text;
     };
 
     this.getSelectedText = () => {
-      if (this.dropdownFilter !== undefined) {
-        this.setSortCategory(this.dropdownFilter);
-        return this.dropdownFilter;
-      }
-      return 'Sort by';
+      this.setSortCategory(this.categoryReference[this.dropdownFilter]);
+      return this.dropdownFilter;
     };
 
-    // To run when component is loaded
+    // RUNS WHEN COMPONENT IS LOADED
     apiService.fetchData()
       .success((data) => {
         // console.log('data', data);
         this.films = data;
-        for (var item of this.films) {
+        for (let item of this.films) {
           item.release_date = parseInt(item.release_date);
           item.rt_score = parseInt(item.rt_score);
         }

@@ -33,6 +33,14 @@ thead, th {
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
+    line-height: 32px;
+}
+
+th:hover {
+    cursor: pointer;
+}
+th:focus {
+    outline: none;
 }
 
 td {
@@ -46,12 +54,15 @@ th, td {
 }
 
 .table-data {
-    transition:.5s;
+    transition: 0.25s;
 }
 
 .table-data:hover {
     background-color: #eeeeee;
-    cursor: pointer;
+}
+
+.active-category {
+    color: rgba(0, 0, 0, 0.87);
 }
 
 .non-numeric-column {
@@ -72,4 +83,8 @@ th, td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+md-icon {
+    /* transition: transform 0.25s, opacity 0.25s; */
 }
