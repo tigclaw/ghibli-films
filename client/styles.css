@@ -52,12 +52,34 @@ th {
     overflow: hidden;
 }
 
+th > md-icon {
+    visibility: hidden;
+}
+
 th.active-category {
     color: rgba(0, 0, 0, 0.87);
 }
 
-th.active-category > md-icon {
+th.active-category > md-icon, th.active-category.hover-category > md-icon {
+    visibility: visible;
     color: rgba(0, 0, 0, 0.87);
+}
+
+th.hover-category > md-icon {
+    visibility: visible;
+    color: rgba(0, 0, 0, 0.38);
+}
+
+th > md-icon.reverse-arrow {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+th > md-icon {
+    transition: 0.25s;
 }
 
 .table-data {
@@ -86,9 +108,4 @@ th.active-category > md-icon {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-md-icon {
-    /* color: rgba(0, 0, 0, 0.87); */
-    /* transition: transform 0.25s, opacity 0.25s; */
 }

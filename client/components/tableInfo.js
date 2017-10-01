@@ -1,8 +1,14 @@
 angular.module('app')
 
   .controller('TableCtrl', function () {
+    this.currentHover = '';
+
     this.clickHeading = function (categoryName) {
       this.setSortCategory({ category: categoryName });
+    };
+
+    this.setCurrentHover = (category) => {
+      this.currentHover = category;
     };
   })
 

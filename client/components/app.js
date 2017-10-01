@@ -28,7 +28,6 @@ angular.module('app')
     // DEFINE METHODS
     this.setSortCategory = (category) => {
       if (category !== this.sortType) {
-        this.sortReverse = false;
         this.sortType = category;
         this.dropdownFilter = this.categoryReferenceRev[this.sortType];
       } else {
