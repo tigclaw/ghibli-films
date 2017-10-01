@@ -7,7 +7,6 @@ angular.module('app')
       Title: 'title',
       Year: 'release_date',
       Director: 'director',
-      Producer: 'producer',
       Score: 'rt_score',
       Description: 'description',
     };
@@ -15,7 +14,6 @@ angular.module('app')
       title: 'Title',
       release_date: 'Year',
       director: 'Director',
-      producer: 'Producer',
       rt_score: 'Score',
       description: 'Description',
     };
