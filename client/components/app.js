@@ -23,7 +23,7 @@ angular.module('app')
     this.sortReverse = false;
     this.searchText = '';
     this.categories = Object.keys(this.categoryReference);
-    this.dropdownFilter = 'Year';
+    this.dropdownFilter = this.categoryReferenceRev[this.sortType];
 
     // DEFINE METHODS
     this.setSortCategory = (category) => {

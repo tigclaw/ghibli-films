@@ -2,21 +2,21 @@
     <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
         <thead>
             <tr layout="row">
-                <th flex="15" ng-click="TableCtrl.clickHeading('title')" class="non-numeric-column">Title<md-icon ng-show="TableCtrl.sortType == 'title' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                <th flex="15" ng-click="TableCtrl.clickHeading('title')" class="non-numeric-column" ng-class="{'active-category': TableCtrl.sortType === 'title'}">Title<md-icon ng-show="TableCtrl.sortType == 'title' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
                     <md-icon ng-show="TableCtrl.sortType == 'title' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
                 </th>
-                <th flex="10" ng-click="TableCtrl.clickHeading('release_date')" class="numeric-column">
+                <th flex="10" ng-click="TableCtrl.clickHeading('release_date')" class="numeric-column" ng-class="{'active-category': TableCtrl.sortType === 'release_date'}" ng-class="{'active-category': hover}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
                     <md-icon ng-show="TableCtrl.sortType === 'release_date' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
                     <md-icon ng-show="TableCtrl.sortType === 'release_date' && TableCtrl.sortReverse">arrow_drop_up</md-icon>Year
                 </th>
-                <th flex="10" ng-click="TableCtrl.clickHeading('rt_score')" class="numeric-column">
+                <th flex="10" ng-click="TableCtrl.clickHeading('rt_score')" class="numeric-column" ng-class="{'active-category': TableCtrl.sortType === 'rt_score'}">
                     <md-icon ng-show="TableCtrl.sortType === 'rt_score' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
                     <md-icon ng-show="TableCtrl.sortType === 'rt_score' && TableCtrl.sortReverse">arrow_drop_up</md-icon>Score
                 </th>
-                <th flex="15" ng-click="TableCtrl.clickHeading('director')" class="non-numeric-column">Director<md-icon ng-show="TableCtrl.sortType === 'director' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                <th flex="15" ng-click="TableCtrl.clickHeading('director')" class="non-numeric-column" ng-class="{'active-category': TableCtrl.sortType === 'director'}">Director<md-icon ng-show="TableCtrl.sortType === 'director' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
                     <md-icon ng-show="TableCtrl.sortType === 'director' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
                 </th>
-                <th flex="50" ng-click="TableCtrl.clickHeading('description')" class="non-numeric-column">Description<md-icon ng-show="TableCtrl.sortType === 'description' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                <th flex="50" ng-click="TableCtrl.clickHeading('description')" class="non-numeric-column" ng-class="{'active-category': TableCtrl.sortType === 'description'}">Description<md-icon ng-show="TableCtrl.sortType === 'description' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
                     <md-icon ng-show="TableCtrl.sortType === 'description' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
                 </th>
             </tr>

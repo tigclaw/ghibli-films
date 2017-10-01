@@ -14,25 +14,16 @@
     opacity:1;
 }
 
-/* Styling for Material Design type data table */
+/* Material Design-type Styling for table */
+/* Ref: https://material.io/guidelines/components/data-tables.html */
 
 table, tbody, th, td, tr {
     font-family: 'Roboto', 'Helvetica Neue', sans-serif;
     flex-wrap: wrap;
-    /* color: rgb(33, 33, 33); */
     border-collapse: collapse;
 }
 
-/* tbody, th, td, tr {
-    padding: 5px 10px;
-} */
-
-thead, th {
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 12px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
+thead {    
     line-height: 32px;
 }
 
@@ -53,16 +44,28 @@ th, td {
     padding: 10px 15px;
 }
 
+th {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+th.active-category {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+th.active-category > md-icon {
+    color: rgba(0, 0, 0, 0.87);
+}
+
 .table-data {
     transition: 0.25s;
 }
 
 .table-data:hover {
     background-color: #eeeeee;
-}
-
-.active-category {
-    color: rgba(0, 0, 0, 0.87);
 }
 
 .non-numeric-column {
@@ -86,5 +89,6 @@ th, td {
 }
 
 md-icon {
+    /* color: rgba(0, 0, 0, 0.87); */
     /* transition: transform 0.25s, opacity 0.25s; */
 }
