@@ -1,18 +1,51 @@
-<table ng-if="TableCtrl.isDoneLoading" class="animate-if">
-    <thead>
-        <tr layout="row">
-            <th flex ng-click="TableCtrl.clickHeading($event)">Title <i class="material-icons" md-36>arrow_drop_down</i></th>
-            <th flex="10" ng-click="TableCtrl.clickHeading($event)">Year <i class="material-icons" md-36>arrow_drop_down</i></th>
-            <th flex="10" ng-click="TableCtrl.clickHeading($event)">Score <i class="material-icons" md-36>arrow_drop_down</i></th>
-            <th flex ng-click="TableCtrl.clickHeading($event)">Director <i class="material-icons" md-36>arrow_drop_down</i></th>
-            <th flex ng-click="TableCtrl.clickHeading($event)">Producer <i class="material-icons" md-36>arrow_drop_down</i></th>
+<md-whiteframe hide-xs class="md-whiteframe-1dp table-whiteframe" layout layout-align="center center">
+    <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
+        <thead>
+            <tr layout="row">
+                <th flex="15" ng-click="TableCtrl.clickHeading('Title')" class="non-numeric-column">Title
+                    <md-icon ng-show="TableCtrl.sortType == 'title' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                    <md-icon ng-show="TableCtrl.sortType == 'title' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
+                </th>
+                <th flex="10" ng-click="TableCtrl.clickHeading('Year')" class="numeric-column">
+                    <md-icon ng-show="TableCtrl.sortType === 'release_date' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                    <md-icon ng-show="TableCtrl.sortType === 'release_date' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
+                    Year
+                </th>
+                <th flex="10" ng-click="TableCtrl.clickHeading('Score')" class="numeric-column">
+                    <md-icon ng-show="TableCtrl.sortType === 'rt_score' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                    <md-icon ng-show="TableCtrl.sortType === 'rt_score' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
+                    Score
+                </th>
+                <th flex="15" ng-click="TableCtrl.clickHeading('Director')" class="non-numeric-column">Director 
+                    <md-icon ng-show="TableCtrl.sortType === 'director' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                    <md-icon ng-show="TableCtrl.sortType === 'director' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
+                </th>
+                <th flex="50" ng-click="TableCtrl.clickHeading('Description')" class="non-numeric-column">Description 
+                    <md-icon ng-show="TableCtrl.sortType === 'description' && !TableCtrl.sortReverse">arrow_drop_down</md-icon>
+                    <md-icon ng-show="TableCtrl.sortType === 'description' && TableCtrl.sortReverse">arrow_drop_up</md-icon>
+                </th>
+            </tr>
+        </thead>
+        <tr layout="row" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText" class="table-data">
+            <td flex="15" class="non-numeric-column">{{ film.title }}</td>
+            <td flex="10" class="numeric-column">{{ film.release_date }}</td>
+            <td flex="10" class="numeric-column">{{ film.rt_score + '%' }}</td>
+            <td flex="15" class="non-numeric-column truncate">{{ film.director }}</td>
+            <td flex="50" class="non-numeric-column">{{ film.description }}</td>
         </tr>
-    </thead>
-    <tr layout="row"ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
-        <td flex>{{ film.title }}</td>
-        <td flex="10">{{ film.release_date }}</td>
-        <td flex="10">{{ film.rt_score + '%' }}</td>
-        <td flex>{{ film.director }}</td>
-        <td flex>{{ film.producer }}</td>
-    </tr>
-</table>
+    </table>
+</md-whiteframe>
+
+<div hide-gt-xs class="md-padding" layout="column" flex>
+    <div layout="column" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
+        <md-card>
+            <md-card-content class="table-data">
+                <p>Title: {{ film.title }}</p>
+                <p>Year: {{ film.release_date }}</p>
+                <p>Score: {{ film.rt_score + '%' }}</p>
+                <p>Director: {{ film.director }}</p>
+                <p>Description: {{ film.description }}</p>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

@@ -1,9 +1,8 @@
 angular.module('app')
 
   .controller('TableCtrl', function () {
-    this.clickHeading = function (event) {
-      this.setSortCategory({ category: event.currentTarget.textContent });
-      this.toggleSortReverse();
+    this.clickHeading = function (categoryName) {
+      this.setSortCategory({ category: categoryName });
     };
   })
 
@@ -13,7 +12,6 @@ angular.module('app')
       films: '<',
       isDoneLoading: '<',
       setSortCategory: '&',
-      toggleSortReverse: '&',
       sortType: '<',
       sortReverse: '<',
       searchText: '<',

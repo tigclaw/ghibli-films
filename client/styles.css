@@ -1,7 +1,4 @@
-.animate-if {
-    background:white;
-    padding:10px;
-}
+/* Animate-if class for ng-animate when loading data */
 
 .animate-if.ng-enter, .animate-if.ng-leave {
     transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
@@ -17,83 +14,62 @@
     opacity:1;
 }
 
-.title {
-    padding-left: 1em;
-}
+/* Styling for Material Design type data table */
 
-table { 
-    width: 100%; 
+table, tbody, th, td, tr {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    flex-wrap: wrap;
+    /* color: rgb(33, 33, 33); */
     border-collapse: collapse;
 }
 
-/* Zebra striping */
-tr:nth-of-type(odd) {
-    background: #eee; 
+/* tbody, th, td, tr {
+    padding: 5px 10px;
+} */
+
+thead, th {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-th {
-    background: rgb(63,81,181);
-    color: white; 
-    font-weight: bold; 
-    border-bottom: 1px solid rgb(230,230,230);
+td {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 13px;
+    border-top: 1px rgba(0, 0, 0, 0.12) solid;
+}
+
+th, td {
+    padding: 10px 15px;
+}
+
+.table-data {
+    transition:.5s;
+}
+
+.table-data:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.non-numeric-column {
     text-align: left;
-    font-size: 0.75em;
-    font-weight: 700;
-    padding: 16px 16px 16px 0;
 }
 
-td, th {
-    padding: 6px; 
-    text-align: left; 
-    font-size: 0.75em;
+.numeric-column {
+    text-align: right;
 }
 
-@media
-only screen and (max-width: 460px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+.table-whiteframe {
+    background-color: white;
+    min-width: 755px;
+}
 
-    /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    table, thead, tbody, th, td, tr {
-        flex-wrap: wrap;
-    }
-
-    /* Hide table headers (but not display: none;, for accessibility) */
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    /* tr { border: 1px solid #ccc; } */
-
-    td { 
-        /* Behave  like a "row" */
-        border: none;
-        position: relative;
-        padding-left: 50%; 
-    }
-
-    td:before {
-        /* Now like a table header */
-        position: absolute;
-        /* Top/left values mimic padding */
-        top: 6px;
-        left: 6px;
-        width: 45%; 
-        padding-right: 10px;
-        white-space: nowrap;
-    }
-
-    /*
-    Label the data
-    */
-    td:nth-of-type(1):before { content: "Title"; }
-	td:nth-of-type(2):before { content: "Year"; }
-	td:nth-of-type(3):before { content: "Director"; }
-	td:nth-of-type(4):before { content: "Producer"; }
-	td:nth-of-type(5):before { content: "Score"; }
+.truncate {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -1,30 +1,34 @@
-const TableCategoryRef = {
-  Title: 'title',
-  Year: 'release_date',
-  Director: 'director',
-  Producer: 'producer',
-  Score: 'rt_score',
-  Description: 'description',
-};
-
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
 
     // Define variables
+    this.categoryReference = {
+      Title: 'title',
+      Year: 'release_date',
+      Director: 'director',
+      Producer: 'producer',
+      Score: 'rt_score',
+      Description: 'description',
+    };
     this.isDoneLoading = false;
-    this.sortType = TableCategoryRef.Year;
+    this.sortType = this.categoryReference.Year;
     this.sortReverse = false;
     this.searchText = '';
+    this.categories = Object.keys(this.categoryReference);
 
     // Define methods
     this.setSortCategory = (category) => {
-      console.log('Set sort category ->', category);
-      this.sortType = TableCategoryRef[category];
+      if (this.categoryReference[category] !== this.sortType) {
+        this.sortReverse = false;
+        this.sortType = this.categoryReference[category];
+      } else {
+        this.toggleSortReverse();
+      }
     };
 
     this.toggleSortReverse = () => {
-      console.log('Toggling sort reverse');
+      // console.log('Toggling sort reverse');
       this.sortReverse = !this.sortReverse;
     };
 
@@ -33,15 +37,27 @@ angular.module('app')
       this.searchText = text;
     };
 
+    this.getSelectedText = () => {
+      if (this.dropdownFilter !== undefined) {
+        this.setSortCategory(this.dropdownFilter);
+        return this.dropdownFilter;
+      }
+      return 'Sort by';
+    };
+
     // To run when component is loaded
     apiService.fetchData()
       .success((data) => {
-        console.log('data', data);
+        // console.log('data', data);
         this.films = data;
+        for (var item of this.films) {
+          item.release_date = parseInt(item.release_date);
+          item.rt_score = parseInt(item.rt_score);
+        }
         this.isDoneLoading = true;
       })
       .error((error) => {
-        alert(`Error connecting to data: ${error}`);
+        alert(`Error downloading data: ${error}`);
         this.isDoneLoading = true;
       });
   })
