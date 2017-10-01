@@ -1,6 +1,7 @@
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
+
     // DEFINE VARIABLES
     this.categoryReference = {
       Title: 'title',
@@ -36,12 +37,10 @@ angular.module('app')
     };
 
     this.toggleSortReverse = () => {
-      // console.log('Toggling sort reverse');
       this.sortReverse = !this.sortReverse;
     };
 
     this.setSearchText = (text) => {
-      // console.log('Setting search ->', text);
       this.searchText = text;
     };
 

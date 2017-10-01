@@ -7,8 +7,8 @@
                     class="non-numeric-column"
                     ng-class="{'active-category': TableCtrl.sortType === 'title', 'hover-category': TableCtrl.currentHover==='title'}"
                     ng-mouseenter="TableCtrl.setCurrentHover('title')"
-                    ng-mouseleave="TableCtrl.setCurrentHover('')">
-                    Title<md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
+                    ng-mouseleave="TableCtrl.setCurrentHover('')">Title
+                    <md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
                 </th>
                 <th flex="10" 
                     ng-click="TableCtrl.clickHeading('release_date')"
@@ -21,20 +21,23 @@
                 <th flex="10" ng-click="TableCtrl.clickHeading('rt_score')"
                     class="numeric-column"
                     ng-class="{'active-category': TableCtrl.sortType === 'rt_score', 'hover-category': TableCtrl.currentHover==='rt_score'}"
-                    ng-mouseenter="TableCtrl.setCurrentHover('rt_score')" ng-mouseleave="TableCtrl.setCurrentHover('')">
+                    ng-mouseenter="TableCtrl.setCurrentHover('rt_score')"
+                    ng-mouseleave="TableCtrl.setCurrentHover('')">
                     <md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>Score
                 </th>
                 <th flex="15" ng-click="TableCtrl.clickHeading('director')"
                     class="non-numeric-column"
                     ng-class="{'active-category': TableCtrl.sortType === 'director', 'hover-category': TableCtrl.currentHover==='director'}"
-                    ng-mouseenter="TableCtrl.setCurrentHover('director')" ng-mouseleave="TableCtrl.setCurrentHover('')">
-                    Director<md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
+                    ng-mouseenter="TableCtrl.setCurrentHover('director')"
+                    ng-mouseleave="TableCtrl.setCurrentHover('')">Director
+                    <md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
                 </th>
                 <th flex="50" ng-click="TableCtrl.clickHeading('description')"
                     class="non-numeric-column"
                     ng-class="{'active-category': TableCtrl.sortType === 'description', 'hover-category': TableCtrl.currentHover==='description'}"
-                    ng-mouseenter="TableCtrl.setCurrentHover('description')" ng-mouseleave="TableCtrl.setCurrentHover('')">
-                    Description<md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
+                    ng-mouseenter="TableCtrl.setCurrentHover('description')"
+                    ng-mouseleave="TableCtrl.setCurrentHover('')">Description
+                    <md-icon ng-class="TableCtrl.sortReverse ? 'reverse-arrow' : ''">arrow_drop_down</md-icon>
                 </th>
             </tr>
         </thead>

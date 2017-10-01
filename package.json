@@ -1,10 +1,10 @@
 {
-  "name": "spa-ang",
+  "name": "ghibli-films",
   "version": "1.0.0",
   "description": "Single page app built with Angular 1.5",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Angela Lin",
