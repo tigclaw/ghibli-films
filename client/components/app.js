@@ -1,7 +1,6 @@
 angular.module('app')
 
   .controller('AppCtrl', function (apiService) {
-
     // DEFINE VARIABLES
     this.categoryReference = {
       Title: 'title',
@@ -47,21 +46,22 @@ angular.module('app')
       return this.dropdownFilter;
     };
 
-    // RUNS WHEN COMPONENT IS LOADED
-    apiService.fetchData()
-      .success((data) => {
+    this.$onInit = () => {
+      apiService.fetchData()
+        .success((data) => {
         // console.log('data', data);
-        this.films = data;
-        for (let item of this.films) {
-          item.release_date = parseInt(item.release_date);
-          item.rt_score = parseInt(item.rt_score);
-        }
-        this.isDoneLoading = true;
-      })
-      .error((error) => {
-        alert(`Error downloading data: ${error}`);
-        this.isDoneLoading = true;
-      });
+          this.films = data;
+          for (const item of this.films) {
+            item.release_date = parseInt(item.release_date);
+            item.rt_score = parseInt(item.rt_score);
+          }
+          this.isDoneLoading = true;
+        })
+        .error((error) => {
+          alert(`Error downloading data: ${error}`);
+          this.isDoneLoading = true;
+        });
+    };
   })
 
   .component('app', {
