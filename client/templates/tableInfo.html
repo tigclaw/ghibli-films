@@ -1,4 +1,4 @@
-<md-whiteframe hide-xs class="md-whiteframe-1dp table-whiteframe" layout layout-align="center center">
+<md-whiteframe ng-if="filterResults.length > 0" hide-xs class="md-whiteframe-1dp table-whiteframe" layout layout-align="center center">
     <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
         <thead>
             <tr layout="row">
@@ -41,7 +41,7 @@
                 </th>
             </tr>
         </thead>
-        <tr layout="row" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText" class="table-data">
+        <tr layout="row" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText as filterResults" class="table-data">
             <td flex="15" class="non-numeric-column">{{ film.title }}</td>
             <td flex="10" class="numeric-column">{{ film.release_date }}</td>
             <td flex="10" class="numeric-column">{{ film.rt_score + '%' }}</td>
@@ -52,7 +52,7 @@
 </md-whiteframe>
 
 <div hide-gt-xs class="md-padding" layout="column" flex>
-    <div layout="column" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText">
+    <div layout="column" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText as filterResults">
         <md-card>
             <md-card-content class="table-data">
                 <p>Title: {{ film.title }}</p>
@@ -64,3 +64,4 @@
         </md-card>
     </div>
 </div>
+<div ng-if="filterResults.length == 0">No results found.</div>
