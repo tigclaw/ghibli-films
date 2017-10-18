@@ -1,6 +1,6 @@
-<md-whiteframe ng-if="filterResults.length > 0" hide-xs class="md-whiteframe-1dp table-whiteframe" layout layout-align="center center">
+<md-whiteframe hide-xs class="md-whiteframe-1dp table-whiteframe" layout layout-align="center center">
     <table ng-if="TableCtrl.isDoneLoading" class="animate-if">
-        <thead>
+        <thead ng-if="filterResults.length > 0">
             <tr layout="row">
                 <th flex="15"
                     ng-click="TableCtrl.clickHeading('title')"
@@ -41,13 +41,15 @@
                 </th>
             </tr>
         </thead>
-        <tr layout="row" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText as filterResults" class="table-data">
-            <td flex="15" class="non-numeric-column">{{ film.title }}</td>
-            <td flex="10" class="numeric-column">{{ film.release_date }}</td>
-            <td flex="10" class="numeric-column">{{ film.rt_score + '%' }}</td>
-            <td flex="15" class="non-numeric-column truncate">{{ film.director }}</td>
-            <td flex="50" class="non-numeric-column">{{ film.description }}</td>
-        </tr>
+        <tbody ng-if="filterResults.length > 0">
+            <tr layout="row" ng-repeat="film in TableCtrl.films | orderBy:TableCtrl.sortType:TableCtrl.sortReverse | filter:TableCtrl.searchText as filterResults" class="table-data">
+                <td flex="15" class="non-numeric-column">{{ film.title }}</td>
+                <td flex="10" class="numeric-column">{{ film.release_date }}</td>
+                <td flex="10" class="numeric-column">{{ film.rt_score + '%' }}</td>
+                <td flex="15" class="non-numeric-column truncate">{{ film.director }}</td>
+                <td flex="50" class="non-numeric-column">{{ film.description }}</td>
+            </tr>
+        </tbody>
     </table>
 </md-whiteframe>
 
