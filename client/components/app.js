@@ -48,19 +48,17 @@ angular.module('app')
 
     this.$onInit = () => {
       apiService.fetchData()
-        .success((data) => {
-        // console.log('data', data);
+        .then((data) => {
           this.films = data;
           for (const item of this.films) {
             item.release_date = parseInt(item.release_date);
             item.rt_score = parseInt(item.rt_score);
           }
           this.isDoneLoading = true;
-        })
-        .error((error) => {
+        }, (error) => {
           alert(`Error downloading data: ${error}`);
           this.isDoneLoading = true;
-        });
+        })
     };
   })
 
